@@ -1,0 +1,9 @@
+/home/sathvik/ros2_ws/build/CMakeFiles/uninstall.dir
+/home/sathvik/ros2_ws/build/CMakeFiles/warehouse_sim_uninstall.dir
+/home/sathvik/ros2_ws/build/CMakeFiles/test.dir
+/home/sathvik/ros2_ws/build/CMakeFiles/edit_cache.dir
+/home/sathvik/ros2_ws/build/CMakeFiles/rebuild_cache.dir
+/home/sathvik/ros2_ws/build/CMakeFiles/list_install_components.dir
+/home/sathvik/ros2_ws/build/CMakeFiles/install.dir
+/home/sathvik/ros2_ws/build/CMakeFiles/install/local.dir
+/home/sathvik/ros2_ws/build/CMakeFiles/install/strip.dir

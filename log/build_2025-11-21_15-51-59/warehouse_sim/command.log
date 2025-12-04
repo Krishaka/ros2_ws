@@ -1,0 +1,2 @@
+Invoking command in '/home/sathvik/ros2_ws/build/warehouse_sim': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/sathvik/ros2_ws/warehouse_sim -DCMAKE_INSTALL_PREFIX=/home/sathvik/ros2_ws/install/warehouse_sim
+Invoked command in '/home/sathvik/ros2_ws/build/warehouse_sim' returned '1': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/sathvik/ros2_ws/warehouse_sim -DCMAKE_INSTALL_PREFIX=/home/sathvik/ros2_ws/install/warehouse_sim
