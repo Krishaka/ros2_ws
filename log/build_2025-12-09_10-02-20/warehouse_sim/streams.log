@@ -1,0 +1,31 @@
+[0.018s] Invoking command in '/home/sathvik/ros2_ws/build/warehouse_sim': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/sathvik/ros2_ws/build/warehouse_sim -- -j8 -l8
+[0.094s] Invoked command in '/home/sathvik/ros2_ws/build/warehouse_sim' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/sathvik/ros2_ws/build/warehouse_sim -- -j8 -l8
+[0.119s] Invoking command in '/home/sathvik/ros2_ws/build/warehouse_sim': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/sathvik/ros2_ws/build/warehouse_sim
+[0.129s] -- Install configuration: ""
+[0.130s] -- Up-to-date: /home/sathvik/ros2_ws/install/warehouse_sim/share/warehouse_sim/launch
+[0.130s] -- Up-to-date: /home/sathvik/ros2_ws/install/warehouse_sim/share/warehouse_sim/launch/warehouse_gz.launch.py
+[0.130s] -- Up-to-date: /home/sathvik/ros2_ws/install/warehouse_sim/share/warehouse_sim/worlds
+[0.130s] -- Up-to-date: /home/sathvik/ros2_ws/install/warehouse_sim/share/warehouse_sim/worlds/warehouse_world.sdf
+[0.131s] -- Up-to-date: /home/sathvik/ros2_ws/install/warehouse_sim/share/warehouse_sim/models
+[0.131s] -- Up-to-date: /home/sathvik/ros2_ws/install/warehouse_sim/share/warehouse_sim/models/diff_robot
+[0.131s] -- Up-to-date: /home/sathvik/ros2_ws/install/warehouse_sim/share/warehouse_sim/models/diff_robot/model.config
+[0.131s] -- Up-to-date: /home/sathvik/ros2_ws/install/warehouse_sim/share/warehouse_sim/models/diff_robot/model2.sdf
+[0.132s] -- Up-to-date: /home/sathvik/ros2_ws/install/warehouse_sim/share/warehouse_sim/models/diff_robot/model.sdf
+[0.132s] -- Up-to-date: /home/sathvik/ros2_ws/install/warehouse_sim/share/warehouse_sim/maps
+[0.132s] -- Up-to-date: /home/sathvik/ros2_ws/install/warehouse_sim/share/warehouse_sim/config
+[0.132s] -- Up-to-date: /home/sathvik/ros2_ws/install/warehouse_sim/share/ament_index/resource_index/package_run_dependencies/warehouse_sim
+[0.132s] -- Up-to-date: /home/sathvik/ros2_ws/install/warehouse_sim/share/ament_index/resource_index/parent_prefix_path/warehouse_sim
+[0.133s] -- Up-to-date: /home/sathvik/ros2_ws/install/warehouse_sim/share/warehouse_sim/environment/ament_prefix_path.sh
+[0.133s] -- Up-to-date: /home/sathvik/ros2_ws/install/warehouse_sim/share/warehouse_sim/environment/ament_prefix_path.dsv
+[0.133s] -- Up-to-date: /home/sathvik/ros2_ws/install/warehouse_sim/share/warehouse_sim/environment/path.sh
+[0.133s] -- Up-to-date: /home/sathvik/ros2_ws/install/warehouse_sim/share/warehouse_sim/environment/path.dsv
+[0.134s] -- Up-to-date: /home/sathvik/ros2_ws/install/warehouse_sim/share/warehouse_sim/local_setup.bash
+[0.135s] -- Up-to-date: /home/sathvik/ros2_ws/install/warehouse_sim/share/warehouse_sim/local_setup.sh
+[0.135s] -- Up-to-date: /home/sathvik/ros2_ws/install/warehouse_sim/share/warehouse_sim/local_setup.zsh
+[0.136s] -- Up-to-date: /home/sathvik/ros2_ws/install/warehouse_sim/share/warehouse_sim/local_setup.dsv
+[0.136s] -- Installing: /home/sathvik/ros2_ws/install/warehouse_sim/share/warehouse_sim/package.dsv
+[0.136s] -- Up-to-date: /home/sathvik/ros2_ws/install/warehouse_sim/share/ament_index/resource_index/packages/warehouse_sim
+[0.136s] -- Up-to-date: /home/sathvik/ros2_ws/install/warehouse_sim/share/warehouse_sim/cmake/warehouse_simConfig.cmake
+[0.137s] -- Up-to-date: /home/sathvik/ros2_ws/install/warehouse_sim/share/warehouse_sim/cmake/warehouse_simConfig-version.cmake
+[0.137s] -- Up-to-date: /home/sathvik/ros2_ws/install/warehouse_sim/share/warehouse_sim/package.xml
+[0.137s] Invoked command in '/home/sathvik/ros2_ws/build/warehouse_sim' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/sathvik/ros2_ws/build/warehouse_sim

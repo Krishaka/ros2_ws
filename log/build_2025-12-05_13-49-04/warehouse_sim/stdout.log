@@ -1,0 +1,11 @@
+-- Install configuration: ""
+-- Up-to-date: /home/sathvik/ros2_ws/install/warehouse_sim/share/warehouse_sim/launch
+-- Up-to-date: /home/sathvik/ros2_ws/install/warehouse_sim/share/warehouse_sim/launch/warehouse_gz.launch.py
+-- Up-to-date: /home/sathvik/ros2_ws/install/warehouse_sim/share/warehouse_sim/worlds
+-- Up-to-date: /home/sathvik/ros2_ws/install/warehouse_sim/share/warehouse_sim/worlds/warehouse_world.sdf
+-- Up-to-date: /home/sathvik/ros2_ws/install/warehouse_sim/share/warehouse_sim/models
+-- Up-to-date: /home/sathvik/ros2_ws/install/warehouse_sim/share/warehouse_sim/models/diff_robot
+-- Up-to-date: /home/sathvik/ros2_ws/install/warehouse_sim/share/warehouse_sim/models/diff_robot/model.config
+-- Up-to-date: /home/sathvik/ros2_ws/install/warehouse_sim/share/warehouse_sim/models/diff_robot/model2.sdf
+-- Up-to-date: /home/sathvik/ros2_ws/install/warehouse_sim/share/warehouse_sim/models/diff_robot/model.sdf
+-- Installing: /home/sathvik/ros2_ws/install/warehouse_sim/share/warehouse_sim/maps

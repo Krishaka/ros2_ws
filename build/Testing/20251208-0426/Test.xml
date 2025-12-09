@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Site BuildName="(empty)"
+	BuildStamp="20251208-0426-Experimental"
+	Name="sathvik-Aspire-A715-41G"
+	Generator="ctest-3.22.1"
+	CompilerName="/usr/bin/g++"
+	CompilerVersion="11.4.0"
+	OSName="Linux"
+	Hostname="sathvik-Aspire-A715-41G"
+	OSRelease="6.8.0-87-generic"
+	OSVersion="#88~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Tue Oct 14 14:03:14 UTC 2"
+	OSPlatform="x86_64"
+	Is64Bits="1"
+	VendorString="AuthenticAMD"
+	VendorID="Advanced Micro Devices"
+	FamilyID="23"
+	ModelID="24"
+	ProcessorCacheSize="512"
+	NumberOfLogicalCPU="8"
+	NumberOfPhysicalCPU="4"
+	TotalVirtualMemory="2047"
+	TotalPhysicalMemory="21949"
+	LogicalProcessorsPerPhysical="2"
+	ProcessorClockFrequency="1477.22"
+	>
+	<Testing>
+		<StartDateTime>Dec 08 21:16 IST</StartDateTime>
+		<StartTestTime>1765208811</StartTestTime>
+		<TestList/>
+		<EndDateTime>Dec 08 21:16 IST</EndDateTime>
+		<EndTestTime>1765208811</EndTestTime>
+		<ElapsedMinutes>0</ElapsedMinutes>
+	</Testing>
+</Site>

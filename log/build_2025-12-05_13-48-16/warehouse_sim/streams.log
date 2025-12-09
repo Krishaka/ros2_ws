@@ -1,0 +1,19 @@
+[0.016s] Invoking command in '/home/sathvik/ros2_ws/build/warehouse_sim': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/sathvik/ros2_ws/build/warehouse_sim -- -j8 -l8
+[0.091s] Invoked command in '/home/sathvik/ros2_ws/build/warehouse_sim' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/sathvik/ros2_ws/build/warehouse_sim -- -j8 -l8
+[0.104s] Invoking command in '/home/sathvik/ros2_ws/build/warehouse_sim': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/sathvik/ros2_ws/build/warehouse_sim
+[0.114s] -- Install configuration: ""
+[0.114s] -- Up-to-date: /home/sathvik/ros2_ws/install/warehouse_sim/share/warehouse_sim/launch
+[0.114s] -- Up-to-date: /home/sathvik/ros2_ws/install/warehouse_sim/share/warehouse_sim/launch/warehouse_gz.launch.py
+[0.115s] -- Up-to-date: /home/sathvik/ros2_ws/install/warehouse_sim/share/warehouse_sim/worlds
+[0.115s] -- Up-to-date: /home/sathvik/ros2_ws/install/warehouse_sim/share/warehouse_sim/worlds/warehouse_world.sdf
+[0.115s] -- Up-to-date: /home/sathvik/ros2_ws/install/warehouse_sim/share/warehouse_sim/models
+[0.115s] -- Up-to-date: /home/sathvik/ros2_ws/install/warehouse_sim/share/warehouse_sim/models/diff_robot
+[0.115s] -- Up-to-date: /home/sathvik/ros2_ws/install/warehouse_sim/share/warehouse_sim/models/diff_robot/model.config
+[0.115s] -- Up-to-date: /home/sathvik/ros2_ws/install/warehouse_sim/share/warehouse_sim/models/diff_robot/model2.sdf
+[0.115s] -- Up-to-date: /home/sathvik/ros2_ws/install/warehouse_sim/share/warehouse_sim/models/diff_robot/model.sdf
+[0.115s] [31mCMake Error at cmake_install.cmake:46 (file):
+[0.115s]   file INSTALL cannot find "/home/sathvik/ros2_ws/warehouse_sim/maps": No
+[0.116s]   such file or directory.
+[0.116s] 
+[0.116s] [0m
+[0.117s] Invoked command in '/home/sathvik/ros2_ws/build/warehouse_sim' returned '1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/sathvik/ros2_ws/build/warehouse_sim
