@@ -42,6 +42,7 @@ def generate_launch_description():
 
         # LIDAR — your model2.sdf sets <topic>/scan</topic>, so bridge the short name '/scan'
         '/scan@sensor_msgs/msg/LaserScan@ignition.msgs.LaserScan',
+        '/scan/points@sensor_msgs/msg/PointCloud2@gz.msgs.PointCloudPacked',
     ]
 
     bridge_node = Node(
@@ -49,7 +50,11 @@ def generate_launch_description():
         executable='parameter_bridge',
         name='ros_gz_parameter_bridge',
         output='screen',
-        arguments=bridge_args
+        arguments=bridge_args,
+        remappings=[
+            ('/scan', '/diff_robot/scan'),
+            ('/scan/points', '/diff_robot/scan/points'),
+        ]
     )
 
     return LaunchDescription([
