@@ -578,6 +578,77 @@
       <joint_name>base_link_to_wheel_right1</joint_name>
     </plugin>
 
+    <!-- 3D LIDAR link + sensor (no ROS plugin; Gazebo Sim sensor only) -->
+    <link name="lidar3d_link">
+      <!-- position of the lidar on the robot -->
+      <pose>0 0 0.4 0 0 0</pose>
+
+      <!-- small inertial so physics is happy -->
+      <inertial>
+        <mass>0.5</mass>
+        <inertia>
+          <ixx>0.001</ixx><ixy>0.0</ixy><ixz>0.0</ixz>
+          <iyy>0.001</iyy><iyz>0.0</iyz>
+          <izz>0.001</izz>
+        </inertia>
+      </inertial>
+
+      <!-- simple collision + visual -->
+      <collision name="collision">
+        <geometry>
+          <cylinder>
+            <radius>0.05</radius>
+            <length>0.05</length>
+          </cylinder>
+        </geometry>
+      </collision>
+
+      <visual name="visual">
+        <geometry>
+          <cylinder>
+            <radius>0.05</radius>
+            <length>0.05</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0.0 1.0 0.0 1</ambient>
+          <diffuse>0.0 1.0 0.0 1</diffuse>
+        </material>
+      </visual>
+
+      <!-- 3D GPU lidar sensor -->
+      <sensor name="lidar3d" type="gpu_lidar">
+        <pose>0 0 0 0 0 0</pose>
+        <update_rate>10</update_rate>
+        <always_on>true</always_on>
+
+        <lidar>
+          <scan>
+            <horizontal>
+              <samples>720</samples>
+              <resolution>1</resolution>
+              <min_angle>-3.14159</min_angle>
+              <max_angle>3.14159</max_angle>
+            </horizontal>
+            <vertical>
+              <samples>16</samples>
+              <resolution>1</resolution>
+              <min_angle>-0.523599</min_angle>
+              <max_angle>0.523599</max_angle>
+            </vertical>
+          </scan>
+
+          <range>
+            <min>0.1</min>
+            <max>20.0</max>
+            <resolution>0.01</resolution>
+          </range>
+        </lidar>
+
+        <!-- Gazebo topic it publishes; keep this exact name -->
+        <topic>/lidar3d/points</topic>
+      </sensor>
+    </link>
 
   </model>
 </sdf>

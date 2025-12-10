@@ -35,14 +35,21 @@ def generate_launch_description():
         '/odom@nav_msgs/msg/Odometry@ignition.msgs.Odometry',
         '/tf@tf2_msgs/msg/TFMessage@ignition.msgs.Pose_V',
 
-        # camera (image + camera_info) and depth (adjusted to your SDF/world paths)
+        # NEW: bridge simulation clock
+        '/clock@rosgraph_msgs/msg/Clock@gz.msgs.Clock',
+
+        # camera (image + camera_info + depth)
         '/world/world_demo/model/diff_robot/link/camera/sensor/camera_front_camera/image@sensor_msgs/msg/Image@ignition.msgs.Image',
         '/world/world_demo/model/diff_robot/link/camera/sensor/camera_front_camera/camera_info@sensor_msgs/msg/CameraInfo@ignition.msgs.CameraInfo',
         '/world/world_demo/model/diff_robot/link/camera/sensor/camera_front_camera/depth_image@sensor_msgs/msg/Image@ignition.msgs.Image',
 
-        # LIDAR — your model2.sdf sets <topic>/scan</topic>, so bridge the short name '/scan'
+        # lidar (2D)
         '/scan@sensor_msgs/msg/LaserScan@ignition.msgs.LaserScan',
         '/scan/points@sensor_msgs/msg/PointCloud2@gz.msgs.PointCloudPacked',
+
+        # NEW: 3D lidar point cloud (Gazebo -> ROS PointCloud2)
+        '/lidar3d/points@sensor_msgs/msg/PointCloud2@gz.msgs.PointCloudPacked',
+        "/lidar3d/points/points@sensor_msgs/msg/PointCloud2[ignition.msgs.PointCloudPacked",
     ]
 
     bridge_node = Node(
@@ -54,6 +61,7 @@ def generate_launch_description():
         remappings=[
             ('/scan', '/diff_robot/scan'),
             ('/scan/points', '/diff_robot/scan/points'),
+            ('/lidar3d/points', '/diff_robot/lidar3d/points'),
         ]
     )
 
