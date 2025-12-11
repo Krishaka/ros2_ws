@@ -56,83 +56,81 @@
     </joint>
 
     <!-- LIDAR link + sensor (no ROS plugin; Gazebo Sim sensor only) -->
-    <link name="lidar">
-      <!-- updated lidar link pose -->
-      <pose relative_to="base_link">0 0 0.2569669071788341 0 0 0</pose>
+    <link name="lidar3d_link">
+      <!-- position of the lidar on the robot -->
+      <pose relative_to="base_link">0 0 0.8569669071788341 0 0 0</pose>
 
-      <visual name="lidar_visual">
-        <pose>0 0 0 0 0 0</pose>
+      <!-- small inertial so physics is happy -->
+      <inertial>
+        <mass>0.5</mass>
+        <inertia>
+          <ixx>0.001</ixx><ixy>0.0</ixy><ixz>0.0</ixz>
+          <iyy>0.001</iyy><iyz>0.0</iyz>
+          <izz>0.001</izz>
+        </inertia>
+      </inertial>
+
+      <!-- simple collision + visual -->
+      <collision name="collision">
         <geometry>
           <cylinder>
-            <radius>0.09</radius>
-            <length>0.13538975482266932</length>
-          </cylinder>
-        </geometry>
-        <material>
-          <ambient>0 0 0 1</ambient>
-          <diffuse>0 0 0 1</diffuse>
-          <specular>0.1 0.1 0.1 1</specular>
-          <emissive>0 0 0 1</emissive>
-        </material>
-      </visual>
-
-      <collision name="lidar_collision">
-        <pose>0 0 0 0 0 0</pose>
-        <geometry>
-          <cylinder>
-            <radius>0.09</radius>
-            <length>0.13538975482266932</length>
+            <radius>0.05</radius>
+            <length>0.05</length>
           </cylinder>
         </geometry>
       </collision>
 
-      <inertial>
-        <mass>1</mass>
-        <inertia>
-          <ixx>0.3333333333333333</ixx>
-          <ixy>0</ixy>
-          <ixz>0</ixz>
-          <iyy>0.5</iyy>
-          <iyz>0</iyz>
-          <izz>0.3333333333333333</izz>
-        </inertia>
-      </inertial>
+      <visual name="visual">
+        <geometry>
+          <cylinder>
+            <radius>0.05</radius>
+            <length>0.05</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0.0 1.0 0.0 1</ambient>
+          <diffuse>0.0 1.0 0.0 1</diffuse>
+        </material>
+      </visual>
 
-      <sensor name="scan" type="gpu_lidar">
+      <!-- 3D GPU lidar sensor -->
+      <sensor name="lidar3d" type="gpu_lidar">
+        <pose>0 0 0 0 0 0</pose>
+        <update_rate>10</update_rate>
         <always_on>true</always_on>
-        <visualize>true</visualize>
-        <!-- increased update rate so publications are easier to see -->
-        <update_rate>20</update_rate>
-        <!-- explicit topic to ensure the scan topic is created -->
-        <topic>/scan</topic>
+
         <lidar>
           <scan>
             <horizontal>
-              <samples>360</samples>
+              <samples>720</samples>
               <resolution>1</resolution>
-              <!-- use -pi..pi instead of 0..2pi -->
-              <min_angle>-3.14159265</min_angle>
-              <max_angle>3.14159265</max_angle>
+              <min_angle>-3.14159</min_angle>
+              <max_angle>3.14159</max_angle>
             </horizontal>
+            <vertical>
+              <samples>16</samples>
+              <resolution>1</resolution>
+              <min_angle>-0.523599</min_angle>
+              <max_angle>0.523599</max_angle>
+            </vertical>
           </scan>
+
           <range>
-            <min>0.12</min>
-            <max>3.5</max>
-            <resolution>0.015</resolution>
+            <min>0.1</min>
+            <max>20.0</max>
+            <resolution>0.01</resolution>
           </range>
-          <noise>
-            <type>gaussian</type>
-            <mean>0</mean>
-            <stddev>0.01</stddev>
-          </noise>
         </lidar>
+
+        <!-- Gazebo topic it publishes; keep this exact name -->
+        <topic>/lidar3d/points</topic>
       </sensor>
     </link>
 
     <joint name="base_link_to_lidar" type="fixed">
-      <pose relative_to="lidar">0 0 0 0 0 0</pose>
+      <pose relative_to="lidar3d_link">0 0 0 0 0 0</pose>
       <parent>base_link</parent>
-      <child>lidar</child>
+      <child>lidar3d_link</child>
     </joint>
 
     <!-- Right front wheel -->
@@ -579,76 +577,7 @@
     </plugin>
 
     <!-- 3D LIDAR link + sensor (no ROS plugin; Gazebo Sim sensor only) -->
-    <link name="lidar3d_link">
-      <!-- position of the lidar on the robot -->
-      <pose>0 0 0.4 0 0 0</pose>
 
-      <!-- small inertial so physics is happy -->
-      <inertial>
-        <mass>0.5</mass>
-        <inertia>
-          <ixx>0.001</ixx><ixy>0.0</ixy><ixz>0.0</ixz>
-          <iyy>0.001</iyy><iyz>0.0</iyz>
-          <izz>0.001</izz>
-        </inertia>
-      </inertial>
-
-      <!-- simple collision + visual -->
-      <collision name="collision">
-        <geometry>
-          <cylinder>
-            <radius>0.05</radius>
-            <length>0.05</length>
-          </cylinder>
-        </geometry>
-      </collision>
-
-      <visual name="visual">
-        <geometry>
-          <cylinder>
-            <radius>0.05</radius>
-            <length>0.05</length>
-          </cylinder>
-        </geometry>
-        <material>
-          <ambient>0.0 1.0 0.0 1</ambient>
-          <diffuse>0.0 1.0 0.0 1</diffuse>
-        </material>
-      </visual>
-
-      <!-- 3D GPU lidar sensor -->
-      <sensor name="lidar3d" type="gpu_lidar">
-        <pose>0 0 0 0 0 0</pose>
-        <update_rate>10</update_rate>
-        <always_on>true</always_on>
-
-        <lidar>
-          <scan>
-            <horizontal>
-              <samples>720</samples>
-              <resolution>1</resolution>
-              <min_angle>-3.14159</min_angle>
-              <max_angle>3.14159</max_angle>
-            </horizontal>
-            <vertical>
-              <samples>16</samples>
-              <resolution>1</resolution>
-              <min_angle>-0.523599</min_angle>
-              <max_angle>0.523599</max_angle>
-            </vertical>
-          </scan>
-
-          <range>
-            <min>0.1</min>
-            <max>20.0</max>
-            <resolution>0.01</resolution>
-          </range>
-        </lidar>
-
-        <!-- Gazebo topic it publishes; keep this exact name -->
-        <topic>/lidar3d/points</topic>
-      </sensor>
-    </link>
 
   </model>
 </sdf>

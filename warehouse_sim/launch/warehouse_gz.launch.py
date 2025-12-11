@@ -44,8 +44,8 @@ def generate_launch_description():
         '/world/world_demo/model/diff_robot/link/camera/sensor/camera_front_camera/depth_image@sensor_msgs/msg/Image@ignition.msgs.Image',
 
         # lidar (2D)
-        '/scan@sensor_msgs/msg/LaserScan@ignition.msgs.LaserScan',
-        '/scan/points@sensor_msgs/msg/PointCloud2@gz.msgs.PointCloudPacked',
+        #'/scan@sensor_msgs/msg/LaserScan@ignition.msgs.LaserScan',
+        #'/scan/points@sensor_msgs/msg/PointCloud2@gz.msgs.PointCloudPacked',
 
         # NEW: 3D lidar point cloud (Gazebo -> ROS PointCloud2)
         #'/lidar3d/points@sensor_msgs/msg/PointCloud2@gz.msgs.PointCloudPacked',

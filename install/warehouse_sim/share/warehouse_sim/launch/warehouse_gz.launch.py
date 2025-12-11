@@ -48,7 +48,7 @@ def generate_launch_description():
         '/scan/points@sensor_msgs/msg/PointCloud2@gz.msgs.PointCloudPacked',
 
         # NEW: 3D lidar point cloud (Gazebo -> ROS PointCloud2)
-        '/lidar3d/points@sensor_msgs/msg/PointCloud2@gz.msgs.PointCloudPacked',
+        #'/lidar3d/points@sensor_msgs/msg/PointCloud2@gz.msgs.PointCloudPacked',
         "/lidar3d/points/points@sensor_msgs/msg/PointCloud2[ignition.msgs.PointCloudPacked",
     ]
 
