@@ -1,0 +1,604 @@
+<?xml version="1.0"?>
+<sdf version="1.8">
+  <model name="Fun_Robot" canonical_link="base_footprint">
+    <static>false</static>
+    <pose>0 0 0 0 0 0</pose>
+
+    <!-- Base footprint (frame only) -->
+    <link name="base_footprint"/>
+
+    <!-- Base link -->
+    <link name="base_link">
+      <pose relative_to="base_footprint">0 0 0.5 0 0 0</pose>
+
+      <visual name="base_link_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <!-- updated size (match provided text) -->
+            <size>1 1 0.5232328098292442</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.033104766565152086 0.46778379610254284 0.12477181755144427 1</ambient>
+          <diffuse>0.033104766565152086 0.46778379610254284 0.12477181755144427 1</diffuse>
+          <specular>0.1 0.1 0.1 1</specular>
+          <emissive>0 0 0 1</emissive>
+        </material>
+      </visual>
+
+      <collision name="base_link_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>1 1 0.5232328098292442</size>
+          </box>
+        </geometry>
+      </collision>
+
+      <inertial>
+        <mass>1</mass>
+        <inertia>
+          <ixx>0.16666666666666666</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.16666666666666666</iyy>
+          <iyz>0</iyz>
+          <izz>0.16666666666666666</izz>
+        </inertia>
+      </inertial>
+    </link>
+
+    <joint name="base_footprint_to_base_link" type="fixed">
+      <pose relative_to="base_link">0 0 0 0 0 0</pose>
+      <parent>base_footprint</parent>
+      <child>base_link</child>
+    </joint>
+
+    <!-- LIDAR link + sensor (no ROS plugin; Gazebo Sim sensor only) -->
+    <link name="lidar3d_link">
+      <!-- position of the lidar on the robot -->
+      <pose relative_to="base_link">0 0 0.8569669071788341 0 0 0</pose>
+
+      <!-- small inertial so physics is happy -->
+      <inertial>
+        <mass>0.5</mass>
+        <inertia>
+          <ixx>0.001</ixx><ixy>0.0</ixy><ixz>0.0</ixz>
+          <iyy>0.001</iyy><iyz>0.0</iyz>
+          <izz>0.001</izz>
+        </inertia>
+      </inertial>
+
+      <!-- simple collision + visual -->
+      <collision name="collision">
+        <geometry>
+          <cylinder>
+            <radius>0.05</radius>
+            <length>0.05</length>
+          </cylinder>
+        </geometry>
+      </collision>
+
+      <visual name="visual">
+        <geometry>
+          <cylinder>
+            <radius>0.05</radius>
+            <length>0.05</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0.0 1.0 0.0 1</ambient>
+          <diffuse>0.0 1.0 0.0 1</diffuse>
+        </material>
+      </visual>
+
+      <!-- 3D GPU lidar sensor -->
+      <sensor name="lidar3d" type="gpu_lidar">
+        <pose>0 0 0 0 0 0</pose>
+        <update_rate>10</update_rate>
+        <always_on>true</always_on>
+
+        <lidar>
+          <scan>
+            <horizontal>
+              <samples>720</samples>
+              <resolution>1</resolution>
+              <min_angle>-3.14159</min_angle>
+              <max_angle>3.14159</max_angle>
+            </horizontal>
+            <vertical>
+              <samples>16</samples>
+              <resolution>1</resolution>
+              <min_angle>-0.523599</min_angle>
+              <max_angle>0.523599</max_angle>
+            </vertical>
+          </scan>
+
+          <range>
+            <min>0.1</min>
+            <max>20.0</max>
+            <resolution>0.01</resolution>
+          </range>
+        </lidar>
+
+        <!-- Gazebo topic it publishes; keep this exact name -->
+        <topic>/lidar3d/points</topic>
+      </sensor>
+    </link>
+
+    <joint name="base_link_to_lidar" type="fixed">
+      <pose relative_to="lidar3d_link">0 0 0 0 0 0</pose>
+      <parent>base_link</parent>
+      <child>lidar3d_link</child>
+    </joint>
+
+    <!-- Right front wheel -->
+    <link name="wheel_right">
+      <!-- updated wheel_right pose (xyz and rpy) -->
+      <pose relative_to="base_link">0.485 0.5371496664052635 -0.2208471930668996 1.5707963267948963 0 0</pose>
+
+      <visual name="wheel_right_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <!-- updated wheel radius -->
+            <radius>0.208</radius>
+            <length>0.05383527298985801</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <!-- updated wheel color to black -->
+          <ambient>0 0 0 1</ambient>
+          <diffuse>0 0 0 1</diffuse>
+          <specular>0.1 0.1 0.1 1</specular>
+          <emissive>0 0 0 1</emissive>
+        </material>
+      </visual>
+
+      <collision name="wheel_right_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <!-- updated collision radius -->
+            <radius>0.208</radius>
+            <length>0.05383527298985801</length>
+          </cylinder>
+        </geometry>
+      </collision>
+
+      <inertial>
+        <mass>1</mass>
+        <inertia>
+          <ixx>0.3333333333333333</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.5</iyy>
+          <iyz>0</iyz>
+          <izz>0.3333333333333333</izz>
+        </inertia>
+      </inertial>
+    </link>
+
+    <joint name="base_link_to_wheel_right" type="revolute">
+      <pose relative_to="wheel_right">0 0 0 0 0 0</pose>
+      <parent>base_link</parent>
+      <child>wheel_right</child>
+      <axis>
+        <xyz expressed_in="wheel_right">0 0 -1</xyz>
+      </axis>
+    </joint>
+
+    <!-- Left front wheel -->
+    <link name="wheel_left">
+      <!-- updated wheel_left pose -->
+      <pose relative_to="base_link">0.485 -0.54 -0.2208471930668996 1.5707963267948963 0 0</pose>
+
+      <visual name="wheel_left_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <!-- updated radius -->
+            <radius>0.208</radius>
+            <length>0.05383527298985801</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <!-- black wheels -->
+          <ambient>0 0 0 1</ambient>
+          <diffuse>0 0 0 1</diffuse>
+          <specular>0.1 0.1 0.1 1</specular>
+          <emissive>0 0 0 1</emissive>
+        </material>
+      </visual>
+
+      <collision name="wheel_left_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.208</radius>
+            <length>0.05383527298985801</length>
+          </cylinder>
+        </geometry>
+      </collision>
+
+      <inertial>
+        <mass>1</mass>
+        <inertia>
+          <ixx>0.3333333333333333</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.5</iyy>
+          <iyz>0</iyz>
+          <izz>0.3333333333333333</izz>
+        </inertia>
+      </inertial>
+    </link>
+
+    <joint name="base_link_to_wheel_left" type="revolute">
+      <pose relative_to="wheel_left">0 0 0 0 0 0</pose>
+      <parent>base_link</parent>
+      <child>wheel_left</child>
+      <axis>
+        <xyz expressed_in="wheel_left">0 0 -1</xyz>
+      </axis>
+    </joint>
+
+    <!-- Camera link + sensor (no ROS plugin; Gazebo Sim sensor only) -->
+    <!-- Camera physical link (mount), no sensors here -->
+    <link name="camera">
+      <!-- DO NOT set pose relative_to base_link here when you use a joint -->
+      <pose relative_to="base_link">0.5271311279373819 0 0.22501975181348832 0 0 0</pose>
+      <visual name="camera_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.07 0.12 0.07</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.3231432091022285 0.31854677811435356 0.3049873140591091 1</ambient>
+          <diffuse>0.3231432091022285 0.31854677811435356 0.3049873140591091 1</diffuse>
+          <specular>0.1 0.1 0.1 1</specular>
+          <emissive>0 0 0 1</emissive>
+        </material>
+      </visual>
+
+      <collision name="camera_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.07 0.12 0.07</size>
+          </box>
+        </geometry>
+      </collision>
+
+      <inertial>
+        <mass>1</mass>
+        <inertia>
+          <ixx>0.16666666666666666</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.16666666666666666</iyy>
+          <iyz>0</iyz>
+          <izz>0.16666666666666666</izz>
+        </inertia>
+      </inertial>
+    </link>
+
+    <!-- Optical frame link (ROS optical convention: Z forward, X right, Y down) -->
+    <link name="camera_optical">
+      <pose relative_to="camera">0 0 0 0 0 0</pose>
+
+      <!-- make it effectively massless and non-colliding -->
+      <inertial>
+        <mass>0.001</mass>
+        <inertia>
+          <ixx>1e-6</ixx> <ixy>0</ixy> <ixz>0</ixz>
+          <iyy>1e-6</iyy> <iyz>0</iyz>
+          <izz>1e-6</izz>
+        </inertia>
+      </inertial>
+
+      <!-- Color camera sensor on the optical frame -->
+      <sensor name="camera_front_camera" type="camera">
+        <always_on>true</always_on>
+        <visualize>true</visualize>
+        <update_rate>10</update_rate>
+
+        <!-- Pin the topic so your existing bridges can stay the same -->
+        <topic>/world/world_demo/model/diff_robot/link/camera/sensor/camera_front_camera/image</topic>
+
+        <camera name="camera_camera">
+          <horizontal_fov>1.3962634</horizontal_fov>
+          <image>
+            <width>640</width>
+            <height>480</height>
+            <format>R8G8B8</format>
+          </image>
+          <clip>
+            <near>0.1</near>
+            <far>100</far>
+          </clip>
+          <noise>
+            <type>gaussian</type>
+            <mean>0.01</mean>
+            <stddev>0.007</stddev>
+          </noise>
+        </camera>
+      </sensor>
+
+      <!-- Depth sensor co-located with the color camera (RGB-D) -->
+      <sensor name="camera_front_camera_depth" type="depth">
+        <always_on>true</always_on>
+        <visualize>false</visualize>
+        <update_rate>10</update_rate>
+
+        <!-- keep the exact topic you already bridge -->
+        <topic>/world/world_demo/model/diff_robot/link/camera/sensor/camera_front_camera/depth_image</topic>
+
+        <camera>
+          <horizontal_fov>1.3962634</horizontal_fov>
+          <image>
+            <width>640</width>
+            <height>480</height>
+            <format>R_FLOAT32</format>
+          </image>
+          <clip>
+            <near>0.1</near>
+            <far>100</far>
+          </clip>
+        </camera>
+      </sensor>
+    </link>
+
+    <!-- base_link -> camera mount (this is your camera position) -->
+<!-- Joint poses are zero; links already carry the mounting pose -->
+    <joint name="base_link_to_camera" type="fixed">
+      <parent>base_link</parent>
+      <child>camera</child>
+      <pose>0 0 0 0 0 0</pose>
+    </joint>
+
+    <joint name="camera_to_camera_optical" type="fixed">
+      <parent>camera</parent>
+      <child>camera_optical</child>
+      <pose>0 0 0 0 0 0</pose>
+    </joint>
+
+    <!-- IMU link + sensor (no ROS plugin; Gazebo Sim sensor only) -->
+    <link name="imu_sensor">
+      <!-- updated IMU link pose (y set to 0) -->
+      <pose relative_to="base_link">-0.51 0 0.17904669409114127 0 0 0</pose>
+
+      <visual name="imu_sensor_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <!-- updated IMU size -->
+            <size>0.03 0.03 0.03</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.2874408377161099 0.9559733532482866 0.913098651791473 1</ambient>
+          <diffuse>0.2874408377161099 0.9559733532482866 0.913098651791473 1</diffuse>
+          <specular>0.1 0.1 0.1 1</specular>
+          <emissive>0 0 0 1</emissive>
+        </material>
+      </visual>
+
+      <collision name="imu_sensor_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.03 0.03 0.03</size>
+          </box>
+        </geometry>
+      </collision>
+
+      <inertial>
+        <mass>1</mass>
+        <inertia>
+          <ixx>0.16666666666666666</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.16666666666666666</iyy>
+          <iyz>0</iyz>
+          <izz>0.16666666666666666</izz>
+        </inertia>
+      </inertial>
+
+      <sensor name="imu" type="imu">
+        <always_on>true</always_on>
+        <update_rate>100</update_rate>
+        <imu>
+          <angular_velocity>
+            <x>
+              <noise type="gaussian">
+                <mean>0</mean>
+                <stddev>0</stddev>
+              </noise>
+            </x>
+            <y>
+              <noise type="gaussian">
+                <mean>0</mean>
+                <stddev>0</stddev>
+              </noise>
+            </y>
+            <z>
+              <noise type="gaussian">
+                <mean>0</mean>
+                <stddev>0</stddev>
+              </noise>
+            </z>
+          </angular_velocity>
+          <linear_acceleration>
+            <x>
+              <noise type="gaussian">
+                <mean>0</mean>
+                <stddev>0</stddev>
+              </noise>
+            </x>
+            <y>
+              <noise type="gaussian">
+                <mean>0</mean>
+                <stddev>0</stddev>
+              </noise>
+            </y>
+            <z>
+              <noise type="gaussian">
+                <mean>0</mean>
+                <stddev>0</stddev>
+              </noise>
+            </z>
+          </linear_acceleration>
+        </imu>
+      </sensor>
+    </link>
+
+    <joint name="base_link_to_imu_sensor" type="fixed">
+      <pose relative_to="imu_sensor">0 0 0 0 0 0</pose>
+      <parent>base_link</parent>
+      <child>imu_sensor</child>
+    </joint>
+
+    <!-- Left rear wheel -->
+    <link name="wheel_left1">
+      <!-- updated left rear wheel pose -->
+      <pose relative_to="base_link">-0.48 -0.54 -0.2208471930668996 1.5707963267948963 0 0</pose>
+
+      <visual name="wheel_left1_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <!-- updated radius -->
+            <radius>0.208</radius>
+            <length>0.05383527298985801</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0 0 0 1</ambient>
+          <diffuse>0 0 0 1</diffuse>
+          <specular>0.1 0.1 0.1 1</specular>
+          <emissive>0 0 0 1</emissive>
+        </material>
+      </visual>
+
+      <collision name="wheel_left1_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.208</radius>
+            <length>0.05383527298985801</length>
+          </cylinder>
+        </geometry>
+      </collision>
+
+      <inertial>
+        <mass>1</mass>
+        <inertia>
+          <ixx>0.3333333333333333</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.5</iyy>
+          <iyz>0</iyz>
+          <izz>0.3333333333333333</izz>
+        </inertia>
+      </inertial>
+    </link>
+
+    <joint name="base_link_to_wheel_left1" type="revolute">
+      <pose relative_to="wheel_left1">0 0 0 0 0 0</pose>
+      <parent>base_link</parent>
+      <child>wheel_left1</child>
+      <axis>
+        <xyz expressed_in="wheel_left1">0 0 -1</xyz>
+      </axis>
+    </joint>
+
+    <!-- Right rear wheel -->
+    <link name="wheel_right1">
+      <!-- updated right rear wheel pose -->
+      <pose relative_to="base_link">-0.485 0.5371496664052635 -0.2208471930668996 1.5707963267948963 0 0</pose>
+
+      <visual name="wheel_right1_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.208</radius>
+            <length>0.05383527298985801</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0 0 0 1</ambient>
+          <diffuse>0 0 0 1</diffuse>
+          <specular>0.1 0.1 0.1 1</specular>
+          <emissive>0 0 0 1</emissive>
+        </material>
+      </visual>
+
+      <collision name="wheel_right1_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.208</radius>
+            <length>0.05383527298985801</length>
+          </cylinder>
+        </geometry>
+      </collision>
+
+      <inertial>
+        <mass>1</mass>
+        <inertia>
+          <ixx>0.3333333333333333</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.5</iyy>
+          <iyz>0</iyz>
+          <izz>0.3333333333333333</izz>
+        </inertia>
+      </inertial>
+    </link>
+
+    <joint name="base_link_to_wheel_right1" type="revolute">
+      <pose relative_to="wheel_right1">0 0 0 0 0 0</pose>
+      <parent>base_link</parent>
+      <child>wheel_right1</child>
+      <axis>
+        <xyz expressed_in="wheel_right1">0 0 -1</xyz>
+      </axis>
+    </joint>
+
+    <!-- Differential Drive Plugin -->
+    <plugin
+        filename="libignition-gazebo-diff-drive-system.so"
+        name="ignition::gazebo::systems::DiffDrive">
+      <left_joint>base_link_to_wheel_left</left_joint>
+      <right_joint>base_link_to_wheel_right</right_joint>
+      <left_joint>base_link_to_wheel_left1</left_joint>
+      <right_joint>base_link_to_wheel_right1</right_joint>
+      <wheel_separation>1.1</wheel_separation>
+      <!-- updated wheel radius to match changed wheels -->
+      <wheel_radius>0.208</wheel_radius>
+      <odom_publish_frequency>50</odom_publish_frequency>
+      <topic>/cmd_vel</topic>
+      <odom_topic>/odom</odom_topic>
+      <tf_topic>/tf</tf_topic>
+      <frame_id>odom</frame_id>
+      <child_frame_id>base_footprint</child_frame_id>
+    </plugin>
+
+    <!-- Gazebo Sim joint state publisher system plugin (Fortress) -->
+    <plugin name="ignition::gazebo::systems::JointStatePublisher"
+            filename="libignition-gazebo-joint-state-publisher-system.so">
+      <joint_name>base_link_to_wheel_right</joint_name>
+      <joint_name>base_link_to_wheel_left</joint_name>
+      <joint_name>base_link_to_wheel_left1</joint_name>
+      <joint_name>base_link_to_wheel_right1</joint_name>
+    </plugin>
+
+    <!-- 3D LIDAR link + sensor (no ROS plugin; Gazebo Sim sensor only) -->
+
+
+  </model>
+</sdf>

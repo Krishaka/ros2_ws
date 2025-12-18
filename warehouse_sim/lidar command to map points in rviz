@@ -1,0 +1,22 @@
+For 2d lidar
+
+cd ~/ros2_ws
+source /opt/ros/humble/setup.bash
+source install/setup.bash
+
+ros2 run tf2_ros static_transform_publisher \
+  0 0 0 0 0 0 \
+  map diff_robot/lidar/scan
+  
+  
+  
+  For 3d lidar
+  
+  source /opt/ros/humble/setup.bash
+source ~/ros2_ws/install/setup.bash
+
+ros2 run tf2_ros static_transform_publisher \
+  0 0 0 0 0 0 \
+  map diff_robot/lidar3d_link/lidar3d
+
+

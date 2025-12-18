@@ -1,0 +1,16 @@
+<root main_tree_to_execute="MainTree">
+  <BehaviorTree ID="MainTree">
+    <Sequence name="Nav2SimpleSequence">
+      <!-- Plan path -->
+      <ComputePathToPose
+        name="compute_path_to_pose"
+        goal="{goal}"
+        path="{path}" />
+
+      <!-- Follow path: ONLY path, no goal -->
+      <FollowPath
+        name="follow_path"
+        path="{path}" />
+    </Sequence>
+  </BehaviorTree>
+</root>

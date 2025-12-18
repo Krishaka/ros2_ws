@@ -1,0 +1,8 @@
+ros2 run tf2_ros static_transform_publisher 0 0 0.5 0 0 0   base_footprint base_link
+
+
+ ros2 run tf2_ros static_transform_publisher   0.5271311279 0 0.2250197518 -1.57 0 -1.57 base_link diff_robot/camera_optical/camera_front_camera
+
+
+ros2 run tf2_ros static_transform_publisher -0.51 0 0.1790466941 0 0 0 base_link diff_robot/imu_sensor/imu
+
