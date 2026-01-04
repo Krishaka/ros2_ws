@@ -1,0 +1,18 @@
+amcl:
+  ros__parameters:
+    use_sim_time: true
+
+    # frames (must match your robot TF tree)
+    global_frame_id: "map"
+    odom_frame_id: "odom"
+    base_frame_id: "base_footprint"
+
+    # topics
+    scan_topic: "sensors/lidar2d_0/scan"
+
+    # IMPORTANT: we will remap this to /map, because in a namespace "map" becomes /<ns>/map
+    map_topic: "map"
+
+    # publish map->odom for this robot
+    tf_broadcast: true
+
